@@ -7,24 +7,34 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix='$', intents=intents)
-#a = input('qual veículo você vai utilizar?')
-#km = input('quantos quilômetros serão rodados')
-#veiculodict= {'carro':120 , 'moto':50}
-#if a == 'carro':
-#   return 120 * b
-#elif a == 'moto':
-#  50 * b
+"""
+a = input('qual veículo você vai utilizar?')
+km = input('quantos quilômetros serão rodados')
+veiculodict= {'carro':120 , 'moto':50}"""
+
 @bot.command()
-async def pokemon(ctx, ):
-    await ctx.send(f'{pokemon_image}')
-    view = discord.ui.View()
-    botao = discord.ui.Button(label='capturar', style=discord.ButtonStyle.green)
-    botao.callback = resposta_botao
-    botao2 = discord.ui.Button(label='fugir', style=discord.ButtonStyle.green)
-    botao2.callback = resposta_botao2
+async def explic(ctx):
+    await ctx.send('use o comando $carbono e passe o veículo e a quilometragem')
+    
+@bot.command()
+async def carbono(ctx, a, km):
+    c = 0
+    km = int(km)
+    
+    if a == 'carro':
+        c = 120 * km
+    elif a == 'moto':
+        c = 50 * km
+    elif a == 'ônibus':
+        c = 1460 * km
+    elif a == 'avião':
+        c = 110 * km
+    elif a == 'barco_pequeno':
+        c = 300 * km
+    elif a == 'barco_cruzeiro':
+        c = 700 * km
+    
+    await ctx.send(str(c) + ' gramas de carbono seriam liberadas na astmosfera.')
 
-    view.add_item(botao2)
-    view.add_item(botao)
-    await ctx.reply(view=view)
+bot.run('tolken')
 
-bot.run('TOLKEN')
